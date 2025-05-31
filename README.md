@@ -29,3 +29,32 @@ Terraform Proxmox Provider: danitso/terraform-provider-proxmox or community fork
 API access to Proxmox with a user/token
 
 Pre-created Proxmox VM template (cloud-init compatible)
+
+## 🛠 Setup
+
+**1) Clone Repo**
+
+```go
+git clone https://github.com/your-org/proxmox-terraform-infra.git
+cd proxmox-terraform-infra
+```
+
+**2) Configure your Terraform variables**
+
+Edit the terraform.tfvars or provide input variables for:
+- Proxmox endpoint
+- API credentials
+- Template name
+- VM specs (name, CPU, memory, etc.)
+
+**3) Initialize Terraform**
+
+```go
+terraform init
+```
+
+**4) Plan and Apply **
+```go
+terraform plan
+terraform apply
+```

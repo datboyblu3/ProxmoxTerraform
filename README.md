@@ -58,3 +58,27 @@ terraform init
 terraform plan
 terraform apply
 ```
+
+## Example
+
+```go
+resource "proxmox_vm_qemu" "ubuntu_vm" {
+  name   = "ubuntu01"
+  target_node = "pve-node1"
+  clone  = "ubuntu-cloudinit-template"
+  
+  cores  = 2
+  memory = 2048
+  disk {
+    size = "10G"
+    type = "scsi"
+  }
+
+  network {
+    model = "virtio"
+    bridge = "vmbr0"
+  }
+
+  sshkeys = file("~/.ssh/id_rsa.pub")
+}
+```

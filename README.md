@@ -24,7 +24,22 @@ Terraform >= 1.0
 
 Proxmox VE >= 6.x
 
-Terraform Proxmox Provider: danitso/terraform-provider-proxmox or community fork
+Terraform Proxmox Provider: [telmate](https://registry.terraform.io/providers/Telmate/proxmox/latest/docs)
+
+```go
+terraform {
+  required_providers {
+    proxmox = {
+      source = "Telmate/proxmox"
+      version = "3.0.1-rc9"
+    }
+  }
+}
+
+provider "proxmox" {
+  # Configuration options
+}
+```
 
 API access to Proxmox with a user/token
 
@@ -53,7 +68,8 @@ Edit the terraform.tfvars or provide input variables for:
 terraform init
 ```
 
-**4) Plan and Apply **
+**4) Plan and Apply**
+
 ```go
 terraform plan
 terraform apply

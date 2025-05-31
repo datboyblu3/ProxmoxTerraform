@@ -15,7 +15,7 @@ resource "proxmox_vm_qemu" "vm-instance" {
 
     network {
         model     = "virtio"
-        bridge    = "vmbr1"
+        bridge    = "vmbr0"
         firewall  = false
         link_down = false
     }

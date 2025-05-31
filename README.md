@@ -5,21 +5,21 @@ This repository automates the provisioning of virtual machines and other infrast
 
 Terraform enables Infrastructure as Code (IaC) for Proxmox, allowing you to define, version, and deploy VMs in a consistent and repeatable manner. This setup is ideal for homelabs, development environments, or production workloads managed through Proxmox.
 
- ## 🚀 Features
+ ## Features
 
-Declarative VM provisioning on Proxmox VE
+- Declarative VM provisioning on Proxmox VE
 
-Cloud-init support for Linux VMs
+- Cloud-init support for Linux VMs
 
-Template-based VM creation
+- Template-based VM creation
 
-Customizable CPU, memory, disk, and network configurations
+- Customizable CPU, memory, disk, and network configurations
 
-SSH key injection for secure access
+- SSH key injection for secure access
 
-Scalable and reusable infrastructure definitions
+- Scalable and reusable infrastructure definitions
 
- ## 📦 Requirements
+ ## Requirements
 Terraform >= 1.0
 
 Proxmox VE >= 6.x

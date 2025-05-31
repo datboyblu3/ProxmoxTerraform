@@ -3,8 +3,7 @@
   hosts: localhost
   become: true
 
-
-  tasks:
+ tasks:
     - name: Update apt packages
       apt:
           update_cache: yes

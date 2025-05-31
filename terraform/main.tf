@@ -1,16 +1,3 @@
-terraform {
-  required_providers {
-    proxmox = {
-      source = "Telmate/proxmox"
-      version = "3.0.1-rc9"
-    }
-  }
-}
-
-provider "proxmox" {
-  # Configuration options
-}
-
 resource "proxmox_vm_qemu" "vm-instance" {
     name                = "vm-instance"
     target_node         = "pve-1"

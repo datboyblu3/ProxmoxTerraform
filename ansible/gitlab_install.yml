@@ -16,5 +16,12 @@
    - name: Download GitLab
      ansible.builtin.get_url:
        url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh
-       dest: /usr/local/bin
+       dest: /usr/local/bin/gitlab_install.sh
+       mode: '0775'
+
+  - name: Run GitLab repository installation script only if repo not present
+    ansible.builtin.command: bash /usr/local/bin/gitlab_install.sh
+      args:
+        creates: /etc/apt/sources.list.d/gitlab_gitlab-ee.list
+        
   

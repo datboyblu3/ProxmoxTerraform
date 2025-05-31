@@ -46,7 +46,7 @@ resource "proxmox_vm_qemu" "vm-instance" {
     }
 
     provisioner "local-exec" {
-       command     = "ansible-playbook -i '${self.public_ip},'  -u opc --private-key '~/.ssh/oci_key' -e '~/.ssh/oci_key.pub' get_stager.yml -vvv --ask-become-pass"
+       command     = "ansible-playbook -i '${self.public_ip},'"
       }
 
 }

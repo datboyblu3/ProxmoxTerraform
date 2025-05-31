@@ -1,5 +1,5 @@
 locals {
-    network             = "vmbr0"
+    network_bridge      = "vmbr0"
     image               = "ubuntu-temp" 
     ssh_user            = "worldboss"
     storage             = "local-lvm"
@@ -46,7 +46,7 @@ resource "proxmox_vm_qemu" "vm-instance" {
 
     network {
         model           = "virtio"
-        bridge          = local.network
+        bridge          = local.network_bridge
         firewall        = false
         link_down       = false
     }

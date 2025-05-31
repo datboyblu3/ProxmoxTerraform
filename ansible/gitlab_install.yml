@@ -13,8 +13,8 @@
         name: ["curl", "openssh-server", "ca-certificates", "tzdata", "perl", "postfix"]
         state: present
 
-  - name: Download GitLab
-    ansible.builtin.get_url:
-      url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh
-      dest: /usr/local/bin
+   - name: Download GitLab
+     ansible.builtin.get_url:
+       url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh
+       dest: /usr/local/bin
   

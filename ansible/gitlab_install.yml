@@ -16,5 +16,5 @@
   - name: Download GitLab
     ansible.builtin.get_url:
       url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh
-      dest: /usr/bin/local
+      dest: /usr/local/bin
   

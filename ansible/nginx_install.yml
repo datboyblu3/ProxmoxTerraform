@@ -1,1 +1,36 @@
+---
+- name: Deploy vulnerable Nginx server
+  hosts: target_servers
+  become: yes
+
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Set up insecure index.html
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <body>
+            <h1>Vulnerable Nginx</h1>
+            <p>Directory listing is on.</p>
+          </body>
+          </html>
+
+    - name: Enable autoindex (directory listing)
+      blockinfile:
+        path: /etc/nginx/sites-available/default
+        insertafter: 'index index.html index.htm index.nginx-debian.html;'
+        block: |
+          autoindex on;
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
 

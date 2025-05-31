@@ -1,6 +1,6 @@
 resource "proxmox_vm_qemu" "vm-instance" {
     name                = "vm-instance"
-    target_node         = "pve-1"
+    target_node         = "pve"
     clone               = "your-template-name"
     full_clone          = true
     cores               = 2

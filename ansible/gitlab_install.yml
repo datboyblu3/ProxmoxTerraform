@@ -1,1 +1,21 @@
+---
+- name: Download and install GitLab on the localhost
+  hosts: localhost
+  become: true
 
+
+  tasks:
+    - name: Update apt packages
+      apt:
+          update_cache: yes
+
+   - name: Install Dependencies
+     apt:
+        name: ["curl", "openssh-server", "ca-certificates", "tzdata", "perl", "postfix"]
+        state: present
+
+  - name: Download GitLab
+    ansible.builtin.get_url:
+      url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh
+      dest: /usr/bin/local
+  

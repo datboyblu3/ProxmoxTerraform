@@ -1,24 +1,24 @@
 locals {
-    network              = "vmbr0"
-    image                = "ubuntu-temp" 
-    ssh_user             = "worldboss"
-    storage              = "local-lvm"
-    target_node          = "pve"
-    private_key_path     = ""
+    network             = "vmbr0"
+    image               = "ubuntu-temp" 
+    ssh_user            = "worldboss"
+    storage             = "local-lvm"
+    target_node         = "pve"
+    private_key_path    = ""
 
     target_servers = {
       target-1 = {
-        machine_type        = "ubuntu-server"
-        target_name         = "nginx"
+        machine_type    = "ubuntu-server"
+        target_name     = "nginx"
     }
       target-2 = {
-        machine_type        = "ubuntu-server"
-        target_name         = "wordpress"
+        machine_type    = "ubuntu-server"
+        target_name     = "wordpress"
     }
 
       target-3 = {
-        machine_type        = "ubuntu-server"
-        target_name         = "smb"
+        machine_type    = "ubuntu-server"
+        target_name     = "smb"
     }
   }
 }
@@ -45,14 +45,14 @@ resource "proxmox_vm_qemu" "vm-instance" {
     }
 
     network {
-        model     = "virtio"
-        bridge    = local.network
-        firewall  = false
-        link_down = false
+        model           = "virtio"
+        bridge          = local.network
+        firewall        = false
+        link_down       = false
     }
 
     provisioner "local-exec" {
-       command     = "ansible-playbook -i '${self.public_ip},'"
+       command          = "ansible-playbook -i '${self.public_ip},'"
       }
 
 }

@@ -20,11 +20,11 @@ Terraform enables Infrastructure as Code (IaC) for Proxmox, allowing you to defi
 - Scalable and reusable infrastructure definitions
 
  ## Requirements
-Terraform >= 1.0
-
-Proxmox VE >= 6.x
-
-Terraform Proxmox Provider: [telmate](https://registry.terraform.io/providers/Telmate/proxmox/latest/docs)
+- Terraform >= 1.0
+- Proxmox VE >= 6.x
+- API access to Proxmox with a user/token
+- Pre-created Proxmox VM template (cloud-init compatible)
+- Terraform Proxmox Provider: [telmate](https://registry.terraform.io/providers/Telmate/proxmox/latest/docs)
 
 ```go
 terraform {
@@ -40,10 +40,6 @@ provider "proxmox" {
   # Configuration options
 }
 ```
-
-API access to Proxmox with a user/token
-
-Pre-created Proxmox VM template (cloud-init compatible)
 
 ## 🛠 Setup
 

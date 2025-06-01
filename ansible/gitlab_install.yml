@@ -3,25 +3,31 @@
   hosts: localhost
   become: true
 
- tasks:
-   - name: Update apt packages
+  tasks:
+    - name: Update apt packages
       apt:
-          update_cache: yes
+        update_cache: yes
 
-   - name: Install Dependencies
-     apt:
-        name: ["curl", "openssh-server", "ca-certificates", "tzdata", "perl", "postfix"]
+    - name: Install Dependencies
+      apt:
+        name:
+          [
+            "curl",
+            "openssh-server",
+            "ca-certificates",
+            "tzdata",
+            "perl",
+            "postfix",
+          ]
         state: present
 
-   - name: Download GitLab
-     ansible.builtin.get_url:
-       url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh
-       dest: /usr/local/bin/gitlab_install.sh
-       mode: '0775'
+    - name: Download GitLab
+      ansible.builtin.get_url:
+        url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh
+        dest: /usr/local/bin/gitlab_install.sh
+        mode: "0775"
 
-   - name: Run GitLab repository installation script only if repo not present
-     ansible.builtin.command: bash /usr/local/bin/gitlab_install.sh
-       args:
-         creates: /etc/apt/sources.list.d/gitlab_gitlab-ee.list
-        
-  
+    - name: Run GitLab repository installation script only if repo not present
+      ansible.builtin.command: bash /usr/local/bin/gitlab_install.sh
+      args:
+        creates: /etc/apt/sources.list.d/gitlab_gitlab-ee.list

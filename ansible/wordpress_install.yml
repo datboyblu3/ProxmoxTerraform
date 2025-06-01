@@ -39,7 +39,7 @@
       file:
         path: /var/www/html/wordpress
         recurse: yes
-        mode: '0777'
+        mode: "0777"
 
     - name: Configure MySQL (insecure)
       mysql_db:
@@ -50,12 +50,11 @@
       mysql_user:
         name: wp_user
         password: wp_pass
-        priv: 'wp_db.*:ALL'
+        priv: "wp_db.*:ALL"
         state: present
-        host: '%'
+        host: "%"
 
     - name: Restart services
       service:
         name: apache2
         state: restarted
-

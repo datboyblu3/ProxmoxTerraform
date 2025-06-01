@@ -25,7 +25,7 @@
     - name: Enable autoindex (directory listing)
       blockinfile:
         path: /etc/nginx/sites-available/default
-        insertafter: 'index index.html index.htm index.nginx-debian.html;'
+        insertafter: "index index.html index.htm index.nginx-debian.html;"
         block: |
           autoindex on;
 
@@ -33,4 +33,3 @@
       service:
         name: nginx
         state: restarted
-

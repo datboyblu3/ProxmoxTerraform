@@ -45,8 +45,8 @@ resource "proxmox_vm_qemu" "vm-instance" {
     }
 
     network {
-        model           = "virtio"
         bridge          = local.network_bridge
+        model           = "virtio"
         firewall        = false
         link_down       = false
     }

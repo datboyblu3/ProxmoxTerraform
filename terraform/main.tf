@@ -1,7 +1,7 @@
 locals {
     network_bridge      = "vmbr0"
     image               = "ubuntu-temp" 
-    ssh_user            = "worldboss"
+    ssh_user            = "shabba"
     storage             = "local-lvm"
     target_node         = "pve"
     private_key_path    = ""

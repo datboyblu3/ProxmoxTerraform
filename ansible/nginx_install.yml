@@ -1,35 +1,44 @@
 ---
-- name: Deploy vulnerable Nginx server
-  hosts: target_servers
+- name: Install and configure nginx for static website hosting
+  hosts: webservers
   become: yes
 
   tasks:
-    - name: Install Nginx
+    - name: Install nginx
       apt:
         name: nginx
-        state: present
+        state: latest
         update_cache: yes
 
-    - name: Set up insecure index.html
+    - name: Add user to group root
+      user:
+        name: "{{ user }}"
+        groups: root
+        state: present
+
+    - name: Remove default nginx configuration
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+
+    - name: Add nginx configuration
       copy:
-        dest: /var/www/html/index.html
-        content: |
-          <!DOCTYPE html>
-          <html>
-          <body>
-            <h1>Vulnerable Nginx</h1>
-            <p>Directory listing is on.</p>
-          </body>
-          </html>
+        src: <control-node-path-to>/static-site-config
+        dest: /etc/nginx/sites-available/
+        owner: "{{ user }}"
+        group: root
+        mode: "0644"
 
-    - name: Enable autoindex (directory listing)
-      blockinfile:
-        path: /etc/nginx/sites-available/default
-        insertafter: "index index.html index.htm index.nginx-debian.html;"
-        block: |
-          autoindex on;
+    - name: Enable website configuration
+      file:
+        src: /etc/nginx/sites-available/static-site-config
+        dest: /etc/nginx/sites-enabled/static-site-config
+        state: link
 
-    - name: Restart Nginx
-      service:
+    - name: Ensure nginx is running
+      systemd:
         name: nginx
-        state: restarted
+        state: started
+        enabled: yes
+  vars:
+    user: "ubuntu"

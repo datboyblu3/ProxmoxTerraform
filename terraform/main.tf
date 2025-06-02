@@ -4,7 +4,6 @@ locals {
     ssh_user            = "shabba"
     storage             = "local-lvm"
     target_node         = "pve"
-    #private_key_path    = ""
 
     target_servers = {
       target-1 = {
@@ -27,21 +26,21 @@ locals {
 resource "proxmox_vm_qemu" "vm-instance" {
 
   for_each = local.target_servers
-    target_server_id    = each.key
+    #target_server_id    = each.key
     name                = each.value.target_name
-    machine_type        = each.value.machine_type
-
-    node                = local.target_node
+    target_node         = local.target_node
     clone               = local.image
     full_clone          = true
     cores               = 2
-    memory              = 4000
+    memory              = 2000
+    sockets             = 1
+    os_type             = "cloud-init"
 
     disk {
         size            = "32G"
-        type            = "scsi"
+        type            = "disk"
         storage         = local.storage
-        discard         = "on"
+        slot            = "scsi0"
     }
 
     network {
@@ -49,6 +48,7 @@ resource "proxmox_vm_qemu" "vm-instance" {
         model           = "virtio"
         firewall        = false
         link_down       = false
+        id              = 0
     }
 
     /*provisioner "local-exec" {

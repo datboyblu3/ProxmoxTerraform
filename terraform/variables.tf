@@ -1,14 +1,14 @@
-variable "api_url" {
-  type = string
-  description = API URL
+variable "pm_api_url" {
+  type        = string
+  description = "sdfgsdfgdsfgdfg"
 }
 
-variable "api_token_id" {
-  type = string
-  description = token id of the api
+variable "pm_api_token_id" {
+  type        = string
+  description = "dfghfdghdsfgthsfrdgthfg"
 }
 
-variable "api_token_secret" {
-  type = string
-  description = API token credential
+variable "pm_api_token_secret" {
+  type        = string
+  description = "mx,cnvzksfnvjwoifower"
 }

@@ -4,7 +4,7 @@ locals {
     ssh_user            = "shabba"
     storage             = "local-lvm"
     target_node         = "pve"
-    private_key_path    = ""
+    #private_key_path    = ""
 
     target_servers = {
       target-1 = {
@@ -51,14 +51,14 @@ resource "proxmox_vm_qemu" "vm-instance" {
         link_down       = false
     }
 
-    provisioner "local-exec" {
+    /*provisioner "local-exec" {
        command          = "ansible-playbook -i '${self.public_ip},'"
-      }
+      }*/
 
 }
 
-output "target_server_ips" {
+/*output "target_server_ips" {
   value = {
     for k, v in proxmox_vm_qemu : k => "http://${}" # Still working
   }
-}
+}*/

@@ -4,7 +4,7 @@
 
 
 
-This repository automates the provisioning of three vulnerable virtual machines and other infrastructure components on a Proxmox Virtual Environment (PVE) cluster using Terraform. Ansible is used to configure each machine with a vulnerable samba, wordpress or nginx server. For an in-depth walkthrough of the infrastructure, please see my [blog on medium.com]().
+This repository automates the provisioning of three vulnerable virtual machines and other infrastructure components on a Proxmox Virtual Environment (PVE) cluster using Terraform. Ansible is used to configure each machine with a vulnerable samba, wordpress or nginx server. For an in-depth walkthrough of the infrastructure, please see my [blog on medium.com](https://medium.com/@DatBoyBlu3/provisioning-proxmox-virtual-machines-with-terraform-d9e9c549f947).
 
  ## 🔧 Overview
 

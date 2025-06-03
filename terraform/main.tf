@@ -26,7 +26,7 @@ locals {
 resource "proxmox_vm_qemu" "vm-instance" {
 
   for_each = local.target_servers
-    #target_server_id    = each.key
+    
     name                = each.value.target_name
     target_node         = local.target_node
     clone               = local.image
@@ -57,8 +57,9 @@ resource "proxmox_vm_qemu" "vm-instance" {
 
 }
 
-/*output "target_server_ips" {
+output "target_server_ips" {
   value = {
-    for k, v in proxmox_vm_qemu : k => "http://${}" # Still working
+    #for k, v in proxmox_vm_qemu : k => "http://${v.network.0.bridge.0.nat}"
+    for k, v in proxmox_vm_qemu.web : k => v.network[0].ip
   }
-}*/
+}
